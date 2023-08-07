@@ -1,46 +1,26 @@
-# Getting Started with Create React App
+#Mini-Project : Go To Mountain
+======
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+현재까지 클론프로젝트를 통해 쌓게된 라이브러리 및 기술스택을 사용해서 만든 미니프로젝트입니다.
 
-## Available Scripts
+1. Programming Language : Typescript
+2. Library : React.js, styled-components, Recoil, Framer-motion  등
+3. editor : vscode
 
-In the project directory, you can run:
+## 0. 요구사항 명세
 
-### `npm start`
+|ID|요구사항분류|요구사항명|요구사항내용|날짜|중요도|난이도|작성자|진행사항|
+|GTM-0|화면설계|헤더작성|공통화면에 출력할 헤더작성|상|하|정은성|완료|
+|GTM-1|화면설계|메뉴바(사이드)작성|메뉴바 활성화시 테두리생성, 서브메뉴바 활성화 및 비활성화 기능추가|상|하|정은성|완료
+|GTM-2|화면설계|풋터작성|풋터작성|상|하|정은성|완료|
+|GTM-3|화면설계|메인페이지|지역별 오늘날씨, 산사태 정보, 호우정보, 등산시 팁|상|중|정은성|완료|
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 100대 명산 정보
+- 날씨정보
+- 재해경보(산사태 등)
+- 지역별 산 정보
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 1. 등산을 좋아하는 사람들을 위한 서비스 페이지입니다.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

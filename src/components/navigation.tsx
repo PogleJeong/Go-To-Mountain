@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 
 import { FlexHorizonCenter, FlexVerticalCenter, FlexVerticalTopCenter } from "../common/style";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
     position: relative;
@@ -104,15 +105,15 @@ function Navigation() {
                     <h1>Service</h1>
                     <ul>
                         <MainMenu onClick={toggleSubMenu}>
-                            <span>메뉴1</span>
+                            <span>산 정보</span>
                             <ul>
-                                <SubMenu>- 서브메뉴1</SubMenu>
-                                <SubMenu>- 서브메뉴2</SubMenu>
-                                <SubMenu>- 서브메뉴3</SubMenu>
+                                <Link to="/mountain-info" ><SubMenu>- 전국 산 정보</SubMenu></Link>
+                                <SubMenu>- 지역별 산 정보</SubMenu>
+                                <SubMenu>- 100대 명산 정보</SubMenu>
                             </ul>
                         </MainMenu>
                         <MainMenu onClick={toggleSubMenu}>
-                            <span>메뉴2</span>
+                            <span>산 통계</span>
                             <ul>
                                 <SubMenu>- 서브메뉴1</SubMenu>
                                 <SubMenu>- 서브메뉴2</SubMenu>

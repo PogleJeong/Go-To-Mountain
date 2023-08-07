@@ -1,3 +1,38 @@
-export const api = () => {
-    return;
+import axios from "axios";
+
+export interface IGetReturnItem {
+    crcmrsghtnginfodscrt: string; // 주변관광정보
+    hkngpntdscrt: string; // 산행포인트설명
+    hndfmsmtnslctnrson: string; // 100 대 명산 선정이유
+    hndfmsmtnmapimageseq: string // 지도이미지
+    mntninfodtlinfocont: string; // 상세정보
+    mntnattchimageseq: string; // 산이미지
+    mntninfomapdnldfilenm: string; // 지도이미지 다운로드
+    mntnnm: string; // 산이름
+    mntninfopoflc: string; // 소재지
+    mntninfohght: number; // 산높이
+    pbtrninfodscrt: string; // 대중교통정보
+    ptmntrcmmncoursdscrt: string; // 대중교통정보(상세)
+}
+
+export interface IGetEntireMountainInfo {
+    header: {
+        resultCode: string;
+        resultMsg: string;
+    },
+    body: {
+        items: IGetReturnItem[];
+        numOfRows: number;
+        pageNo: number;
+        totalCount: number;
+    }
+}
+
+export const getEntireMountainInfo = async() => {
+    const url = 'http://openapi.forest.go.kr/openapi/service/trailInfoService/getforeststoryservice'; /*URL*/
+    const key = "8UiaBNpE5tqr0WoaK%2F0Thp%2BVKlwHXips4PcGEExDxfPHInqobykkMNfkxrp0jq8XtPsNi%2BkCRSWwjoWawQLV8Q%3D%3D";
+    const response = await axios(`${url}?serviceKey=${key}`,{
+        method: "GET",
+    });
+    return response.data?.response?.body?.items?.item;
 }

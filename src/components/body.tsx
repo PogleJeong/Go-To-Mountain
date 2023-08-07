@@ -5,7 +5,7 @@ import { FlexHorizon } from "../common/style";
 import Navigation from "./navigation";
 
 const Wrapper = styled(FlexHorizon)`
-    height: 800px;
+    height: 1600px;
 `
 
 function Body() {

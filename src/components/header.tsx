@@ -6,6 +6,7 @@ const Wrapper = styled(FlexHorizonCenter)`
     height: 200px;
     background: linear-gradient( rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0)), url(${mountainImage});
     background-position: 85% 60%;
+    background-size: cover;
     box-shadow: 2px 3px 5px 0px;
 `
 const Title = styled.h1`
