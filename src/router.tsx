@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "./Root";
 import Search from "./pages/search";
 import Home from "./pages/home";
-import MountainInfo from "./pages/mountain-info";
+import MountainList from "./pages/mountain-list";
 
 export const router = createBrowserRouter([
     {
@@ -18,8 +18,8 @@ export const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: "mountain-info",
-                element: <MountainInfo />,
+                path: "mountain-list/*",
+                element: <MountainList />,
             },
         ]
     }

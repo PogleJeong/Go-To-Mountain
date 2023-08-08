@@ -1,5 +1,12 @@
 import axios from "axios";
 
+interface IGetEntireMoutainInfoParams {
+    mountainName: string;
+    mountainHeight: number;
+    mountainAddress: string;
+    numOfRows: number;
+}
+
 export interface IGetReturnItem {
     crcmrsghtnginfodscrt: string; // 주변관광정보
     hkngpntdscrt: string; // 산행포인트설명
@@ -28,11 +35,19 @@ export interface IGetEntireMountainInfo {
     }
 }
 
-export const getEntireMountainInfo = async() => {
+export const getEntireMountainInfo = async(mountainName:string, mountainHeight:string, mountainAddress:string) => {
     const url = 'http://openapi.forest.go.kr/openapi/service/trailInfoService/getforeststoryservice'; /*URL*/
-    const key = "8UiaBNpE5tqr0WoaK%2F0Thp%2BVKlwHXips4PcGEExDxfPHInqobykkMNfkxrp0jq8XtPsNi%2BkCRSWwjoWawQLV8Q%3D%3D";
-    const response = await axios(`${url}?serviceKey=${key}`,{
+    const Servicekey = "8UiaBNpE5tqr0WoaK%2F0Thp%2BVKlwHXips4PcGEExDxfPHInqobykkMNfkxrp0jq8XtPsNi%2BkCRSWwjoWawQLV8Q%3D%3D";
+    const numOfRows = 100;
+    let queryString = "";
+    queryString += mountainName ? `mntnNm=${mountainName}&` : "";
+    queryString += mountainHeight ? `mntninfohght=${mountainHeight}&` : "";
+    queryString += mountainAddress ? `mntninfopoflc=${mountainAddress}&` : "";
+    queryString += `numOfRows=${numOfRows}`;
+    console.log(queryString);
+    const response = await axios(`${url}?serviceKey=${Servicekey}&${queryString}`,{
         method: "GET",
     });
+   
     return response.data?.response?.body?.items?.item;
 }
