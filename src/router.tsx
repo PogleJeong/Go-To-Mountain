@@ -3,6 +3,7 @@ import Root from "./Root";
 import Search from "./pages/search";
 import Home from "./pages/home";
 import MountainList from "./pages/mountain-list";
+import MountainDetail from "./pages/mountain_detail";
 
 export const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
             {
                 path: "mountain-list/*",
                 element: <MountainList />,
+            },
+            {
+                path: "mountain-detail/*",
+                element: <MountainDetail />,
             },
         ]
     }

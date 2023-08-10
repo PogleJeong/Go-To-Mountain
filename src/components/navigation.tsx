@@ -107,7 +107,7 @@ function Navigation() {
                         <MainMenu onClick={toggleSubMenu}>
                             <span>산 정보</span>
                             <ul>
-                                <Link to="/mountain-info" ><SubMenu>- 전국 산 정보</SubMenu></Link>
+                                <Link to="/mountain-list" ><SubMenu>- 전국 산 정보</SubMenu></Link>
                                 <SubMenu>- 지역별 산 정보</SubMenu>
                                 <SubMenu>- 100대 명산 정보</SubMenu>
                             </ul>

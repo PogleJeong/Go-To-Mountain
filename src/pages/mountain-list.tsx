@@ -1,12 +1,13 @@
-import { useRef, forwardRef } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 import { FlexHorizonCenter } from "../common/style";
 import SearchResult from "../components/search-result";
 
 const Wrapper = styled.div`
-    padding: 25px;
     width: 100%;
     height: 1200px;
+    padding-left: 50px;
+    padding-right: 50px;
 `
 
 const Title = styled(FlexHorizonCenter)`

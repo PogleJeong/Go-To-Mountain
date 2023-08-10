@@ -1,11 +1,11 @@
 import axios from "axios";
 
-interface IGetEntireMoutainInfoParams {
+/* interface IGetEntireMoutainInfoParams {
     mountainName: string;
     mountainHeight: number;
     mountainAddress: string;
     numOfRows: number;
-}
+} */
 
 export interface IGetReturnItem {
     crcmrsghtnginfodscrt: string; // 주변관광정보
@@ -44,7 +44,6 @@ export const getEntireMountainInfo = async(mountainName:string, mountainHeight:s
     queryString += mountainHeight ? `mntninfohght=${mountainHeight}&` : "";
     queryString += mountainAddress ? `mntninfopoflc=${mountainAddress}&` : "";
     queryString += `numOfRows=${numOfRows}`;
-    console.log(queryString);
     const response = await axios(`${url}?serviceKey=${Servicekey}&${queryString}`,{
         method: "GET",
     });
