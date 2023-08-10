@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
-import { FlexHorizonCenter, FlexVertical } from "../common/style";
+import { FlexHorizonCenter, FlexVertical, FlexVerticalCenter } from "../common/style";
 import { IGetReturnItem } from "../api";
 
 const Wrapper = styled(FlexVertical)`
@@ -50,19 +50,74 @@ const Table = styled.table`
             border-collapse: collapse;
         }
     }
+    a {
+        color: green;
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+`
+
+const ContentContainer = styled(FlexVertical)`
+`
+
+const DetailContainer = styled(FlexVerticalCenter)`
+    margin-top: 20px;
+    margin-bottom: 100px;
+    padding: 20px;
+    h2 {
+        padding-left: 7px;
+        padding-right: 7px;
+        padding-bottom: 5px;
+        margin-bottom: 50px;
+        border-bottom: 7px double black;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    span {
+        min-height: 100px;
+        line-height: 180%;
+        font-size: 1em;
+    }
+    /*  border-radius: 15px;
+     border-left: 3px solid black;
+     border-right: 3px solid black; */
+`
+
+const PublicTransportContainer = styled(FlexVerticalCenter)`
+    margin-top: 20px;
+    h2 {
+        padding-left: 7px;
+        padding-right: 7px;
+        padding-bottom: 5px;
+        border-bottom: 7px double black;
+        margin-bottom: 50px;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    span {
+        padding: 20px;
+        min-height: 100px;
+        line-height: 180%;
+        font-size: 1em;
+    }
+    /*  border-left: 3px solid black;
+     border-right: 3px solid black;
+     border-radius: 15px; */
 `
 
 function MountainDetail() {
     const location = useLocation();
     const { info } : { info: IGetReturnItem } = location.state;
     useEffect(()=>{
-        const test = document.getElementById("test");
-        test!.innerHTML = info?.mntninfodtlinfocont;
-    })
+        const detailSpan = document.getElementById("mntninfodtlinfocont");
+        detailSpan!.innerText = info?.mntninfodtlinfocont.replaceAll("&lt;br /&gt;", "");
+    },[])
     return (
         <Wrapper>
             <Summary>
-                <Image src={info.hndfmsmtnmapimageseq} alt="상세이미지가 존재하지 않습니다."/>
+                <Image src={info.mntnattchimageseq} alt="상세이미지가 존재하지 않습니다."/>
                 <Table>
                     <tbody>
                         <tr>
@@ -80,15 +135,32 @@ function MountainDetail() {
                         <tr>
                             <th>파일</th>
                             <td>
-                                <a href={info?.mntninfomapdnldfilenm}>다운로드</a>
+                                {info?.mntninfomapdnldfilenm ?
+                                <a download="file.png" href={info?.mntninfomapdnldfilenm} target="_self" >
+                                    <span>지도이미지</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-file-earmark-richtext" viewBox="0 0 16 16">
+                                        <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                                        <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
+                                    </svg>
+                                </a>
+                                :
+                                <span>-</span>
+                                }
                             </td>
                         </tr>
                     </tbody>
                 </Table>
             </Summary>
-            <div>
-                <span id="test"></span>
-            </div>
+            <ContentContainer>
+                <DetailContainer>
+                    <h2>상세정보</h2>
+                    <span id="mntninfodtlinfocont"></span>
+                </DetailContainer>
+                <PublicTransportContainer>
+                    <h2>대중교통</h2>
+                    <span>{info?.pbtrninfodscrt === "  " || "== 정보가 존재하지 않습니다 =="}</span>
+                </PublicTransportContainer>
+            </ContentContainer>
         </Wrapper>
     )
 }

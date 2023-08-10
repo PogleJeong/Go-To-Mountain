@@ -96,7 +96,6 @@ function SearchResult() {
     const handleImageError = (event: any) => {
         event.target.src = "";
     }
-    console.log(data);
     return(
         <Wrapper>
             {
