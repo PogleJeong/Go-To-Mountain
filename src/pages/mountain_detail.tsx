@@ -114,7 +114,7 @@ function MountainDetail() {
     useEffect(()=>{
         const detailSpan = document.getElementById("mntninfodtlinfocont");
         detailSpan!.innerText = txtChange(info?.mntninfodtlinfocont || "");
-    })s
+    })
     return (
         <Wrapper>
             <Summary>
