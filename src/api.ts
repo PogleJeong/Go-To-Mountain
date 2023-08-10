@@ -50,3 +50,5 @@ export const getEntireMountainInfo = async(mountainName:string, mountainHeight:s
    
     return response.data?.response?.body?.items?.item;
 }
+
+export interface IGetWildFire
