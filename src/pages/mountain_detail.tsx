@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { FlexHorizonCenter, FlexVertical, FlexVerticalCenter } from "../common/style";
 import { IGetReturnItem } from "../api";
+import { txtChange } from "../common/function";
 
 const Wrapper = styled(FlexVertical)`
     padding-left: 50px;
@@ -112,8 +113,8 @@ function MountainDetail() {
     const { info } : { info: IGetReturnItem } = location.state;
     useEffect(()=>{
         const detailSpan = document.getElementById("mntninfodtlinfocont");
-        detailSpan!.innerText = info?.mntninfodtlinfocont.replaceAll("&lt;br /&gt;", "");
-    },[])
+        detailSpan!.innerText = txtChange(info?.mntninfodtlinfocont || "");
+    })s
     return (
         <Wrapper>
             <Summary>

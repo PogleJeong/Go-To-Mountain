@@ -1,12 +1,13 @@
 
 import React, { useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import styled from "styled-components";
 
 import { IGetReturnItem, getEntireMountainInfo } from "../api";
 import { FlexHorizonCenter, FlexVerticalTopCenter } from "../common/style";
-import { Link, useSearchParams } from "react-router-dom";
 import { range } from "../common/function";
+import defaultMountainImage from "../images/defaultMountainImage.png";
 
 const Wrapper = styled(FlexVerticalTopCenter)`
    position: relative;
@@ -22,6 +23,8 @@ const GridBox = styled.div`
     height: 1000px;
     max-height: 1000px;
     a {
+        max-height: 325px;
+        color: black;
         text-decoration: none;
     }
 `
@@ -43,7 +46,7 @@ const ItemBox = styled(FlexVerticalTopCenter)`
         justify-content: center;
         align-items: center;
         width: 100%;
-        height: 50%;
+        height: 150px;
         border-radius: 5px;
     }
     span {
@@ -63,12 +66,12 @@ const IndexBox = styled(FlexHorizonCenter)`
     width: 100%;
 `
 
-const IndexBtn = styled(FlexHorizonCenter)<{active?: boolean}>`
+const IndexBtn = styled(FlexHorizonCenter)<{active?: string}>`
     font-size: 1.2em;
     font-weight: bold;
     padding: 10px;
     border: 2px solid white;
-    background-color: ${(props) => props.active ? "beige": "white"};
+    background-color: ${(props) => props.active === "true" ? "beige": "white"};
     cursor: pointer;
     &:hover {
         border: 2px solid black;
@@ -93,8 +96,9 @@ function SearchResult() {
             searchParams.get("mntninfopoflc")|| "",
         )
     );
+    console.log(data);
     const handleImageError = (event: any) => {
-        event.target.src = "";
+        event.target.src = defaultMountainImage;
     }
     return(
         <Wrapper>
@@ -126,7 +130,7 @@ function SearchResult() {
             <IndexBox>
             {
                 range(Math.floor(data?.length! / 15)).map((page, index)=>(
-                    <IndexBtn active={page===pageIndex ? true: false} onClick={()=>setPageIndex(page)} key={index}>{page+1}</IndexBtn>
+                    <IndexBtn active={page===pageIndex ? "true": "false"} onClick={()=>setPageIndex(page)} key={index}>{page+1}</IndexBtn>
                 ))
             }
             </IndexBox>

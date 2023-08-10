@@ -5,3 +5,13 @@ export const range = (index:number) => {
     }
     return arr;
 }
+
+export const txtChange = (text: string) => {
+    const result = text ?
+    text.replaceAll("&lt;br /&gt;", "").replaceAll("&amp;nbsp;", "").
+    replaceAll("<BR>","\n").replaceAll("<br>","\n").replaceAll("<br />","\n")
+    .replaceAll("<p>","").replaceAll("</p>","")
+    : 
+    ""
+    return result;
+}
